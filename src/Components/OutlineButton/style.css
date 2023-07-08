@@ -1,0 +1,22 @@
+button{
+    background-color: transparent;
+    border: 2px solid var(--btn-color);
+    color: var(--btn-labal);
+    padding: 16px 58px;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+button:hover{
+    background-color: var(--btn-color);
+    color: var(--light-bg);
+}
