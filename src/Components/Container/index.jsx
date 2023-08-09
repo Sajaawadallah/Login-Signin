@@ -1,17 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './style.css'
 
-class index extends Component {
+const Container = ({ children }) => {
+  return (
+    <div className="Container" >
+      {children}
+    </div>
 
-  render() {
-    const { children } = this.props
-    return (
-      <div className={`Container ${this.props.variant ? this.props.variant : " "}`} >
-        {children}
-      </div>
+  )
 
-    )
-  }
 }
 
-export default index
+export default Container

@@ -1,51 +1,18 @@
 .col{
 
-    width: 100%;
-   
-}
-.col-6{
+  flex: 1;
   
-    width: 50%;
    
-}
-.col-4{
-   width: calc(340px - 2%);
-   
-   
-}
-.col-8{
-  width: calc(680px -2%);
-  
-  
 }
 
-
-.col-3 {
-    flex-basis: 25%;
-    width: 100%;
-    
-}
 
 
 @media (max-width: 768px) {
-    .col.col-3 {
-      flex-basis: 50%;
-    }
-    .col.col-4 {
-        flex-basis: 50%;
-      }
-    .col.col-6 {
+   
+    .col{
         flex-basis: 100%;
       }
   }
   
-  @media (max-width: 480px) {
-    .col.col-3 {
-        flex-basis: 100%;
-      }
-    .col.col-4 {
-      flex-basis: 100%;
-    }
-  }
 
 

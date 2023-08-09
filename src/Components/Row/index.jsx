@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './style.css'
 
-class index extends Component {
-    render() {
-        return (
-            <div className={`row ${this.props.dir} ? ${this.props.dir} : " " 
-            ${this.props.justify} ? ${this.props.justify} : " " 
-             ${this.props.align} ? ${this.props.align} : " " `} >
-                {this.props.children}
-            </div>
-        )
-    }
+const Row = ({ dir, justify, align, children }) => {
+
+    return (
+        <div className={`row ${dir} ? ${dir} : " " 
+            ${justify} ? ${justify} : " " 
+             ${align} ? ${align} : " " `} >
+            {children}
+        </div>
+    )
 }
 
 
 
-export default index
+
+export default Row

@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './style.css'
 
-class index extends Component {
-    render() {
-        return (
-            <div className={` col-${this.props.col_num}  `}>{this.props.children}</div>
-        )
-    }
+const Col = ({ children }) => {
+
+    return (
+        <div className="col">{children}</div>
+    )
+
 }
 
-export default index
+export default Col

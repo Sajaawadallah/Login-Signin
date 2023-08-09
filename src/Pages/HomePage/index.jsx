@@ -1,18 +1,19 @@
 import React from "react";
-import Footer from '../HomePage/Sections/Footer'
+import Login from "../Login";
 
 
 
-class HomePage extends React.Component {
 
-    render() {
+const HomePage = () => {
 
-        return (
-            <>
-                <Footer />
-            </>
-        );
-    }
+    return (
+        <>
+            <Login />
+
+
+        </>
+    );
 }
+
 
 export default HomePage;
