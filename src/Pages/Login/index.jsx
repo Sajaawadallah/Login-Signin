@@ -8,6 +8,17 @@ import Typography from '../../components/Typography';
 import Image from '../../components/Image';
 import { IMAGES, SOCIELLINKS } from '../../constent/loginpage'
 import SoiclLink from '../../components/SoiclLink'
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import axios from 'axios';
+import { Navigate } from 'react-router-dom';
+import { PATHS } from '../../router/paths'
+import { useAuthContext } from '../../context/authContext';
+import { ROLES } from '../../constent/roles';
+import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -15,6 +26,64 @@ import SoiclLink from '../../components/SoiclLink'
 
 
 const Login = () => {
+
+    const savedRole = localStorage.getItem('role');
+
+
+    const { setUser, setToken, setRole } = useAuthContext();
+    const [isAuth, setIsAuth] = useState(false)
+
+
+    const notify = () => toast("Invalid email or password", {
+        hideProgressBar: true,
+    });
+
+
+    const schema = yup.object().shape({
+        email: yup.string().required('Email is required'),
+        password: yup.string().required('Password is required'),
+    });
+
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+
+
+    const onSubmit = async (data) => {
+        console.log(savedRole)
+
+        try {
+            const res = await axios.post('https://react-tt-api.onrender.com/api/users/login', data);
+            if (res.status === 200) {
+                setIsAuth(true)
+                setUser(res.data);
+                setToken(res.data.token);
+                localStorage.setItem('token', res.data.token);
+                if (res.data.isAdmin === true) {
+                    setRole(ROLES.ADMIN);
+                    localStorage.setItem('role', ROLES.ADMIN);
+
+                }
+                else {
+                    setRole(ROLES.USER);
+                    localStorage.setItem('role', ROLES.USER);
+
+                }
+            }
+
+
+
+
+        } catch (err) {
+            console.log(err);
+            setIsAuth(false)
+            notify()
+        }
+    }
+
+
 
     return (
 
@@ -46,8 +115,6 @@ const Login = () => {
                     <div className='botom-img'>
                         <Image src={IMAGES[0].src} alt={IMAGES[0].alt} />
                     </div>
-
-
                 </Col>
                 <Col>
                     <div className='Form'>
@@ -72,6 +139,36 @@ const Login = () => {
                             </svg>
 
                         </div>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+
+                            {isAuth ? <Navigate to={PATHS.HOME} replace={true} /> : <ToastContainer />}
+
+                            <div className='input-div'>
+                                <label htmlFor="email">Your email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    {...register('email')}
+                                    placeholder="Enter your email "
+                                />
+                                {errors.email && <span className='errormasg'>{errors.email.message}</span>}
+                            </div>
+                            <div className='input-div'>
+                                <label htmlFor="password">Your Password</label>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    {...register('password')}
+                                    placeholder="Enter your password"
+                                />
+                                {errors.password && <span className='errormasg'>{errors.password.message}</span>}
+                            </div>
+
+
+                            <button type="submit">Login</button>
+                        </form>
+
+
                     </div>
                 </Col>
 
@@ -79,11 +176,14 @@ const Login = () => {
             </Row>
 
 
+
+
         </Container>
 
-
     )
+
 }
+
 
 export default Login
 
