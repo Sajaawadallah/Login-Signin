@@ -1,5 +1,8 @@
 import React from 'react'
 import Container from '../../components/Container';
+import Image from '../../components/Image';
+import Row from '../../components/Row';
+import { IMAGES } from '../../constent/loginpage';
 import { useAuthContext } from '../../context/authContext';
 import './style.css'
 
@@ -13,44 +16,35 @@ const Profie = () => {
 
     return (
         <Container>
-            <h3> Details about {user.name}  </h3>
+            <Row>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Header 1</th>
-                        <th>Header 2</th>
-                        <th>Header 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Row 1, Cell 1</td>
-                        <td>Row 1, Cell 2</td>
-                        <td>Row 1, Cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>Row 2, Cell 1</td>
-                        <td>Row 2, Cell 2</td>
-                        <td>Row 2, Cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>Row 3, Cell 1</td>
-                        <td>Row 3, Cell 2</td>
-                        <td>Row 3, Cell 3</td>
-                    </tr>
-                </tbody>
-            </table>
+                {console.log(user)}
 
 
+                <div className='user_img'>
+                    <Image src={IMAGES[1].src} />
+                </div>
 
 
+                <div className='info_section'>
+                    <h2 className='info'>Information</h2>
+                    <div className='info-row'>
+                        <h3>ID:</h3>
+                        <h4>{user._id}</h4>
+                    </div>
+                    <div className='info-row'>
+                        <h3>NAME:</h3>
+                        <h4>{user.name}</h4>
+                    </div>
+                    <div className='info-row'>
+                        <h3>EMAIL:</h3>
+                        <h4>{user.email}</h4>
+                    </div>
+
+                </div>
 
 
-
-            <h3>Name: {user.name}</h3>
-            <h3>Email: {user.email}</h3>
-
+            </Row>
         </Container>
     );
 }

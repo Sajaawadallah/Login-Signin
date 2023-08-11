@@ -35,7 +35,7 @@ const HomePage = () => {
 
             <div className="header">
                 <h2>Welcome back {user.name}</h2>
-                <Link to={PATHS.PROFILE}><div className="user_img"><Image src={IMAGES[1].src} alt={IMAGES[1].alt} /></div></Link>
+                <Link to={PATHS.PROFILE}><div className="img"><Image src={IMAGES[1].src} alt={IMAGES[1].alt} /></div></Link>
 
             </div>
 

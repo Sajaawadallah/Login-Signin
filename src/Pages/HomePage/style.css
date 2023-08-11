@@ -60,9 +60,28 @@ padding: 17px 9px;
 
 }
 
-.user_img{
+.img {
     width: 70px;
     height: 70px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 2px solid #f0f0f0;
+    overflow: hidden;
+   
+    
 }
+
+
+
+
+
+
+
 

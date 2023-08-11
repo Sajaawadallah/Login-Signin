@@ -7,10 +7,11 @@ export const IMAGES = [
     }
     , {
         id: 2,
-        src: 'Images/Rectangle 1.png',
+        src: 'Images/default-user-image.png',
         alt: 'userimage',
 
     }
+
 ]
 
 export const SOCIELLINKS = [
