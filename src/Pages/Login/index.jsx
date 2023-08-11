@@ -30,7 +30,7 @@ const Login = () => {
     const savedRole = localStorage.getItem('role');
 
 
-    const { setUser, setToken, setRole } = useAuthContext();
+    const { setUser, setToken, token, setRole, role } = useAuthContext();
     const [isAuth, setIsAuth] = useState(false)
 
 
@@ -52,23 +52,28 @@ const Login = () => {
 
 
     const onSubmit = async (data) => {
-        console.log(savedRole)
+        // console.log(savedRole)
 
         try {
             const res = await axios.post('https://react-tt-api.onrender.com/api/users/login', data);
             if (res.status === 200) {
                 setIsAuth(true)
                 setUser(res.data);
-                setToken(res.data.token);
                 localStorage.setItem('token', res.data.token);
+                setToken(token);
                 if (res.data.isAdmin === true) {
-                    setRole(ROLES.ADMIN);
                     localStorage.setItem('role', ROLES.ADMIN);
+                    const newrole = localStorage.getItem("role")
+                    setRole(newrole)
+
 
                 }
                 else {
-                    setRole(ROLES.USER);
                     localStorage.setItem('role', ROLES.USER);
+                    const newrole = localStorage.getItem("role")
+                    setRole(newrole)
+
+
 
                 }
             }
@@ -141,8 +146,6 @@ const Login = () => {
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            {isAuth ? <Navigate to={PATHS.HOME} replace={true} /> : <ToastContainer />}
-
                             <div className='input-div'>
                                 <label htmlFor="email">Your email</label>
                                 <input
@@ -166,6 +169,7 @@ const Login = () => {
 
 
                             <button type="submit">Login</button>
+                            {isAuth ? <Navigate to={PATHS.HOME} replace={true} /> : <ToastContainer />}
                         </form>
 
 

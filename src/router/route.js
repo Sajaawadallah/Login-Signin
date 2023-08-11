@@ -8,12 +8,6 @@ import Gured from '../components/Gureds/Gured';
 
 
 
-
-
-
-
-
-
 export const routes = [
 
   {

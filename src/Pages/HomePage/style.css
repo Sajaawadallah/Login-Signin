@@ -1,6 +1,8 @@
 
 .big-sec {
     background: linear-gradient(134deg, #F8F8F8 0%, #FFF 100%);
+    padding-bottom: 5%;
+    overflow-y: hidden;
 
 }
 
@@ -8,13 +10,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10rem;
     justify-content: space-between;
     position: relative;
     width: 5%;
+    height: 670px;
     left: 0;
     margin-left: 2.5rem;
     padding-top: 3rem;
+   
 }
 
 .centerd-icons{
@@ -26,7 +29,24 @@
 
  .log-out {
     margin-left: 45px ;
+    cursor: pointer;
    
 
+}
+
+
+.dark-light{
+    border-radius: 60px;
+background: #C1C1C1;
+display: flex;
+flex-direction:column ;
+justify-content: center;
+gap: 8px;
+padding: 17px 9px;
+
+}
+
+.dark-light div {
+    cursor: pointer;
 }
 
