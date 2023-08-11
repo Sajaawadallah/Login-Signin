@@ -50,3 +50,19 @@ padding: 17px 9px;
     cursor: pointer;
 }
 
+
+.header{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+   float: right;
+   margin: 2.5rem;
+
+}
+
+.user_img{
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+

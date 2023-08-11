@@ -5,6 +5,12 @@ export const IMAGES = [
         alt: 'game-icon',
 
     }
+    , {
+        id: 2,
+        src: 'Images/Rectangle 1.png',
+        alt: 'userimage',
+
+    }
 ]
 
 export const SOCIELLINKS = [

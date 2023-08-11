@@ -5,12 +5,15 @@ import { useAuthContext } from '../../context/authContext';
 import { ROLES } from "../../constent/roles";
 import { useState } from "react";
 import { PATHS } from "../../router/paths";
+import Image from "../../components/Image";
+import { IMAGES } from "../../constent/loginpage";
 
 
 const HomePage = () => {
 
-    const { setRole, role, setUser, setToken, token } = useAuthContext();
+    const { setRole, role, setUser, setToken, user } = useAuthContext();
     const [isAuth, setIsAuth] = useState(true);
+
 
 
 
@@ -29,6 +32,12 @@ const HomePage = () => {
     return (
 
         <div className="big-sec">
+
+            <div className="header">
+                <h2>Welcome back {user.name}</h2>
+                <Link to={PATHS.PROFILE}><div className="user_img"><Image src={IMAGES[1].src} alt={IMAGES[1].alt} /></div></Link>
+
+            </div>
 
             <div className="sidebar">
                 <div className="logo">
@@ -54,7 +63,6 @@ const HomePage = () => {
                     </svg>
                 </div>
                 <div className="centerd-icons">
-
                     {role === ROLES.ADMIN ? <Link to="/users">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 55 55" fill="none">
                             <g filter="url(#filter0_i_3_9)">
@@ -124,7 +132,7 @@ const HomePage = () => {
                 </div>
             </div>
 
-            {role === ROLES.ADMIN ? <Navigate to={PATHS.LOGIN} replace={true} /> : " "}
+            {!isAuth ? <Navigate to={PATHS.LOGIN} replace={true} /> : " "}
 
         </div>
 

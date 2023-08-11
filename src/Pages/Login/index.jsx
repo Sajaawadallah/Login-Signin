@@ -65,6 +65,7 @@ const Login = () => {
                     localStorage.setItem('role', ROLES.ADMIN);
                     const newrole = localStorage.getItem("role")
                     setRole(newrole)
+                    console.log("hi", newrole)
 
 
                 }

@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import Signin from '../pages/Signin';
 import { PATHS } from './paths'
 import Gured from '../components/Gureds/Gured';
+import Profie from '../pages/Profile';
 
 
 
@@ -17,7 +18,7 @@ export const routes = [
   },
   {
     path: PATHS.PROFILE,
-    element: <Login />,
+    element: <Profie />,
   },
 
   {
