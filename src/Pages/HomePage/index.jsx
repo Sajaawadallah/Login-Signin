@@ -7,18 +7,15 @@ import { useState } from "react";
 import { PATHS } from "../../router/paths";
 import Image from "../../components/Image";
 import { IMAGES } from "../../constent/loginpage";
-import Container from "../../components/Container";
-import Row from "../../components/Row";
-import Col from "../../components/Col";
 import LastPlayed from "../../components/LastPleyed";
-import { cards } from "../../constent/homepage";
+import { cards, imgslids } from "../../constent/homepage";
+import GameSLider from "../../components/GameSlider";
 
 
 const HomePage = () => {
 
     const { setRole, role, setUser, setToken, user } = useAuthContext();
     const [isAuth, setIsAuth] = useState(true);
-
 
 
 
@@ -45,12 +42,20 @@ const HomePage = () => {
 
             </div>
             <div className="content">
-                <div className="content-row">
-                    <h3 className="top-title">NEW GAME </h3>
-                    <div className="content-col">
+                <h3 className="top-title">NEW GAME </h3>
+                <div className="content-row-sp">
+
+                    {
+                        imgslids.map((item) => (
+                            <div className="content-col">
+                                <GameSLider key={item.id} src={item.mainsrc} title={item.title} src1={item.src1} src2={item.src2} dir={item.dir} imgdir={item.imgdir} secimgdir={item.secimgdir} />
+                            </div>
+
+                        ))
+                    }
 
 
-                    </div>
+
 
 
                 </div>
